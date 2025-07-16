@@ -1,57 +1,23 @@
 """
 MFTR Trading System Package
-A modular cryptocurrency trading analysis system based on the MFTR indicator
+A comprehensive trading analysis system centered around the MFTR indicator
 """
 
+from .advanced_data_fetcher import AdvancedDataFetcher
+from .advanced_indicators import AdvancedIndicators, DEFAULT_MFTR_PARAMS
+from .probability_analyzer import ProbabilityAnalyzer
+from .parameter_optimizer import ParameterOptimizer
+from .mftr_system import MFTRSystem, run_mftr_analysis
+
 __version__ = "1.0.0"
-__author__ = "Trading Team"
-__description__ = "MFTR Pro Analysis & Optimization Suite"
+__author__ = "Trading Tools Team"
 
-# Import main classes for easy access
-from .config import Config, DEFAULT_MFTR_PARAMS, DATA_CONFIG, SIGNAL_CONFIG, BACKTEST_CONFIG
-from .data_fetcher.data_fetcher import DataFetcher, fetch_paginated_data
-from .indicators import TechnicalIndicators, calculate_adx, calculate_mftr
-from .signal_generator import SignalGenerator, generate_buy_signals, get_signal_details
-from .backtester import Backtester, analyze_event_probability, optimize_angle_parameter
-from .main import MFTRSystem
-
-# Define what gets imported with "from mftr_system import *"
 __all__ = [
-    # Main system
-    'MFTRSystem',
-    
-    # Core classes
-    'Config',
-    'DataFetcher',
-    'TechnicalIndicators', 
-    'SignalGenerator',
-    'Backtester',
-    
-    # Configuration
+    'AdvancedDataFetcher',
+    'AdvancedIndicators', 
     'DEFAULT_MFTR_PARAMS',
-    'DATA_CONFIG',
-    'SIGNAL_CONFIG',
-    'BACKTEST_CONFIG',
-    
-    # Convenience functions
-    'fetch_paginated_data',
-    'calculate_adx',
-    'calculate_mftr',
-    'generate_buy_signals',
-    'get_signal_details',
-    'analyze_event_probability',
-    'optimize_angle_parameter',
+    'ProbabilityAnalyzer',
+    'ParameterOptimizer',
+    'MFTRSystem',
+    'run_mftr_analysis'
 ]
-
-def get_version():
-    """Return package version"""
-    return __version__
-
-def get_info():
-    """Return package information"""
-    return {
-        'name': 'MFTR Trading System',
-        'version': __version__,
-        'author': __author__,
-        'description': __description__
-    }

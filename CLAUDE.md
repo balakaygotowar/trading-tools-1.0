@@ -14,10 +14,10 @@ See folder ".claude/commands/" for .md files containing prompts from the user.
 - Install dependencies: `pip install -r requirements.txt`
 
 ### Google Colab Setup
-This is also compatible with Google Colab. The main script contains pip install commands that should be run in Colab:
+The advanced MFTR modules are compatible with Google Colab. Install required packages:
 
 ```bash
-pip install --upgrade numpy==1.23.5 pandas ccxt pandas_ta
+pip install --upgrade numpy==1.23.5 pandas ccxt pandas_ta matplotlib
 ```
 
 ### Common Commands
@@ -36,23 +36,26 @@ trading tools 1.0/
 ├── PROJECT_REQUIREMENTS.md
 ├── requirements.txt
 ├── src/
+│   ├── __init__.py
 │   ├── main.py
 │   ├── config.py
 │   ├── data_fetcher.py
 │   ├── indicators.py
 │   ├── signal_generator.py
 │   ├── backtester.py
-│   └── mftr_analysis.py
+│   ├── mftr_analysis.py
+│   ├── advanced_data_fetcher.py
+│   ├── advanced_indicators.py
+│   ├── probability_analyzer.py
+│   ├── parameter_optimizer.py
+│   └── mftr_system.py
 ├── data/
 │   ├── market_data.csv
 │   └── test_market_data.xlsx
 ├── tests/
 │   └── test_data_fetcher.py
-├── notebooks/
-│   └── MFTR_Pro_Analysis_&_Optimization_Suite_(v5).ipynb
-└── archive/
-    ├── trading_tool_v0.5
-    └── Trading Tools 1.0-20250716T032140Z-1-001.zip
+└── examples/
+    └── mftr_analysis_example.py
 ```
 
 This project is a comprehensive trading tools system with the following high-level architecture:
@@ -123,11 +126,27 @@ All components are z-score normalized over a rolling window, then combined and s
 
 ## Running the Code
 
-The script is designed to run top-to-bottom in Google Colab. Key execution points:
+### Quick Start
+```python
+from src.mftr_system import run_mftr_analysis
 
-1. **Data Collection**: Fetches 5000 hourly BTC/USDT bars by default
-2. **Indicator Calculation**: Applies MFTR with default parameters
-3. **Analysis Execution**: Runs probability analysis and parameter optimization automatically
+# Run complete analysis
+results = run_mftr_analysis('BTC/USDT', '1h', 5000)
+```
+
+### Advanced Usage
+```python
+from src.mftr_system import MFTRSystem
+
+system = MFTRSystem()
+system.run_complete_analysis('ETH/USDT', '4h', 2000)
+```
+
+### Key Execution Points
+1. **Data Collection**: Fetches historical OHLCV data with pagination
+2. **Indicator Calculation**: Applies MFTR with configurable parameters
+3. **Analysis Execution**: Runs probability analysis and parameter optimization
+4. **Visualization**: Generates comprehensive charts and reports
 
 ## Default Parameters
 
