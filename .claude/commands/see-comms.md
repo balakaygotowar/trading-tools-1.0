@@ -1,0 +1,2 @@
+see the /Users/blakekelly/Documents/misc py projects/trading tools 1.0/.claude/claude comms.md file and respond to each item on a new line, inserted from the original text.
+If the line is a command, then execute the command as if it was submitted through the terminal. 
